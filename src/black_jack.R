@@ -85,6 +85,8 @@ assign_game_outcome <- function(game_state) {
     game_state$outcome <- outcomes$dealer_wins
   } else if (player_score == dealer_score) {
     game_state$outcome <- outcomes$tie
+  } else {
+    game_state$outcome <- outcomes$player_wins
   }
 
   game_state
