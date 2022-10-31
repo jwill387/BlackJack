@@ -8,7 +8,7 @@ make_new_deck <- function() {
 
   deck_df$score <- deck_df$card
   deck_df$score <- ifelse(deck_df$card %in% face_cards, 10, deck_df$score)
-  deck_df$score <- ifelse(deck_df$card == "A", 11, deck_df$score)
+  deck_df$score <- ifelse(deck_df$card == "A", 1, deck_df$score)
   deck_df$score <- as.numeric(deck_df$score)
 
   deck_df
@@ -41,11 +41,10 @@ initialize_game <- function() {
 calc_hand_total <- function(hand_df) {
   hand_total <- sum(hand_df$score)
 
-  # Convert Aces from 11 to 1 if over 21
-  if (hand_total > 21 & "A" %in% hand_df$card) {
+  # Convert Aces from 1 to 11 if sum(...) <= 11
+  if (hand_total <= 11 & "A" %in% hand_df$card) {
     scores <- hand_df$score
-    scores[hand_df$card == "A"] <- 1
-    hand_total <- sum(hand_df$score)
+    hand_total <- sum(hand_df$score) + 10
   }
 
   hand_total
@@ -91,3 +90,4 @@ assign_game_outcome <- function(game_state) {
 
   game_state
 }
+
