@@ -54,7 +54,6 @@ calc_hand_total <- function(hand_df) {
 deal_card <- function(game_state, hand_name = "player") {
   i <- sample(seq_len(nrow(game_state$deck)), size = 1)
 
-  game_state[[hand_name]]
   game_state[[hand_name]] <- rbind(game_state[[hand_name]], game_state$deck[i, ])
   game_state$deck <- game_state$deck[-i, ]
 
