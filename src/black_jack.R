@@ -18,7 +18,7 @@ make_empty_hand <- function() {
   data.frame(
     card = character(0),
     suit = character(0),
-    score = character(0)
+    score = numeric(0)
   )
 }
 
