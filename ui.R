@@ -9,5 +9,6 @@ shinyUI(fluidPage(
       label = "Deal",
       style = "pill",
       color = "success"
-    )
+    ),
+    verbatimTextOutput("TEST")
 ))

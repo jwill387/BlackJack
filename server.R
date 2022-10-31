@@ -1,9 +1,14 @@
 library(shiny)
 
 shinyServer(function(input, output) {
-  observeEvent(input$deal, {
-    userHand <- sample(deck, size = 2, replace = FALSE)
+  output$new_deal <- observeEvent(input$deal, {
+    my_reactive_value <- eventReactive(input$button, {
+      GAMESTATE <- initialize_game()
+    })
 
+    output$TEST <- renderPrint({
+      GAMESTATE
+    })
   })
 
 })
