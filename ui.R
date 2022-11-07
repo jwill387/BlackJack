@@ -1,14 +1,13 @@
 library(shiny)
 library(shinyWidgets)
 
-shinyUI(fluidPage(
-    titlePanel("Blackjack"),
-
-    actionBttn(
-      inputId = "deal",
-      label = "Deal",
-      style = "pill",
-      color = "success"
-    ),
-    verbatimTextOutput("TEST")
-))
+fluidPage(
+  titlePanel("Blackjack"),
+  actionBttn(
+    inputId = "deal",
+    label = "Deal",
+    style = "pill",
+    color = "success"
+  ),
+  verbatimTextOutput("TEST")
+)
