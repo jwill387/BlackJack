@@ -1,11 +1,20 @@
 library(shiny)
 
 function(input, output) {
-  GAMESTATE <- eventReactive(input$deal, {
-    initialize_game()
+  rv <- reactiveValues()
+
+  observeEvent(input$deal, {
+    rv$GAMESTATE <- initialize_game()
+    rv$outcome <- NULL
+  })
+
+  observeEvent(input$hit, {
+    rv$GAMESTATE <- deal_card(rv$GAMESTATE, "player")
+    if (calc_hand_total(rv$GAMESTATE$player) > 21) {rv$outcome <- "Lose, Bust"}
   })
 
   output$TEST <- renderPrint({
-    GAMESTATE()
+    rv$GAMESTATE
   })
 }
+

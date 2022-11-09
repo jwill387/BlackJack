@@ -9,5 +9,14 @@ fluidPage(
     style = "pill",
     color = "success"
   ),
+
+  actionBttn(
+    inputId = "hit",
+    label = "Hit?",
+    style = "pill",
+    color = "success"
+  ),
+
+
   verbatimTextOutput("TEST")
 )
